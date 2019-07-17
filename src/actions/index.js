@@ -13,7 +13,7 @@ export const FETCHING_CHARACTERS_START = 'FETCHING_CHARACTERS_START'
 // if successfully completed
 export const FETCHING_CHARACTERS_SUCCESS = 'FETCHING_CHARACTERS_SUCCESS'
 // if failed
-export const FETCHING_CHARACTERS_FAILED = 'FETCHING_CHARACTERS_FAILED'
+export const FETCHING_CHARACTERS_FAILURE = 'FETCHING_CHARACTERS_FAILURE'
 
 // action creator
 export function fetchingCharacters() {
@@ -26,7 +26,7 @@ export function fetchingCharacters() {
                 dispatch({ type: FETCHING_CHARACTERS_SUCCESS, payload: response.data})
             })
             .catch((error) => {
-                dispatch({ type: FETCHING_CHARACTERS_FAILED, payload: error.response.data})
+                dispatch({ type: FETCHING_CHARACTERS_FAILURE, payload: error.response.data})
             })
     }
 }
