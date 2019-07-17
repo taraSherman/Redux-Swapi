@@ -9,24 +9,24 @@
 import axios from 'axios';
 
 // loading state
-export const GET_CHARACTERS_START = 'GET_CHARACTERS_START'
+export const FETCHING_CHARACTERS_START = 'FETCHING_CHARACTERS_START'
 // if successfully completed
-export const GET_CHARACTERS_SUCCESS = 'GET_CHARACTERS_SUCCESS'
+export const FETCHING_CHARACTERS_SUCCESS = 'FETCHING_CHARACTERS_SUCCESS'
 // if failed
-export const GET_CHARACTERS_FAILED = 'GET_CHARACTERS_FAILED'
+export const FETCHING_CHARACTERS_FAILED = 'FETCHING_CHARACTERS_FAILED'
 
 // action creator
-export function getCharacters() {
+export function fetchingCharacters() {
     return (dispatch) => {
-        dispatch({ type: GET_CHARACTERS_START})
+        dispatch({ type: FETCHING_CHARACTERS_START})
 
         axios
             .get('https://swapi.co/api/people/')
             .then((response) => {
-                dispatch({ type: GET_CHARACTERS_SUCCESS, payload: response.data})
+                dispatch({ type: FETCHING_CHARACTERS_SUCCESS, payload: response.data})
             })
             .catch((error) => {
-                dispatch({ type: GET_CHARACTERS_FAILED, payload: error.response.data})
+                dispatch({ type: FETCHING_CHARACTERS_FAILED, payload: error.response.data})
             })
     }
 }
