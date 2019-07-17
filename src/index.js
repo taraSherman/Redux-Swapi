@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from 'redux-thunk';
 import rootReducer from "./reducers";
 import logger from 'redux-logger';
@@ -17,6 +17,7 @@ const store = createStore(
   rootReducer,
   applyMiddleware(thunk, logger),
   /* applyMiddleware goes here */
+  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 );
 
 ReactDOM.render(
